@@ -1,0 +1,363 @@
+2026-06-08 10:06:43 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-terraform-azure-documentation
+	
+2026-06-08 10:38:51 From Gopal Das to Everyone:
+	e20
+	
+2026-06-08 10:58:22 From AshuGupta to Everyone:
+	Joined
+	
+2026-06-08 11:31:46 From AbhijitMukherjee to Everyone:
+	I am back
+	
+2026-06-08 11:33:17 From Rajasekar V (Raja) to Everyone:
+	back
+	
+2026-06-08 11:43:34 From Gopal Das to Everyone:
+	https://docs.google.com/spreadsheets/d/1tf1XCZ8pTP-VDPjZJ8wWkHq5WSCfBHfxOYs0Jd2v3DI/edit?usp=sharing
+	
+2026-06-08 11:47:02 From Rajasekar V (Raja) to Everyone:
+	logged in
+	
+2026-06-08 11:47:27 From RaghavendraRamakrish to Everyone:
+	Done
+	
+2026-06-08 11:47:51 From Kamlesh Wamankar to Everyone:
+	Logged in
+	
+2026-06-08 11:48:45 From AbhijitMukherjee to Everyone:
+	able to login
+	
+2026-06-08 11:48:55 From AjithP to Everyone:
+	Logged in to Azure portal
+	
+2026-06-08 11:49:14 From AshuGupta to Everyone:
+	Logged in
+	
+2026-06-08 11:49:16 From VikrantPasricha to Everyone:
+	logged in
+	
+2026-06-08 11:49:16 From YajamanamChandana to Everyone:
+	Logged in
+	
+2026-06-08 11:49:18 From Mallikarjuna H M to Everyone:
+	logged in
+	
+2026-06-08 11:49:22 From Anushalakshmi Veerabommayan to Everyone:
+	Logged IN
+	
+2026-06-08 11:49:25 From Gowri Shankar vinay to Everyone:
+	Logged in
+	
+2026-06-08 11:49:32 From Shajeer.S to Everyone:
+	logged in
+	
+2026-06-08 11:49:26 From Abhinav Kashyap to Everyone:
+	Logged in
+	
+2026-06-08 11:49:42 From Jayesh Hathi to Everyone:
+	logged in
+	
+2026-06-08 11:52:59 From SajeevanKS to Everyone:
+	logged in
+	
+2026-06-08 11:57:50 From Gopal Das to Everyone:
+	Tasa750102
+	
+2026-06-08 12:01:44 From RaghavendraRamakrish to Everyone:
+	Done
+	
+2026-06-08 12:08:36 From Rajasekar V (Raja) to Everyone:
+	VM got created
+	
+2026-06-08 12:09:19 From Anushalakshmi Veerabommayan to Everyone:
+	VM Deploymentdone
+	
+2026-06-08 12:10:29 From SajeevanKS to Everyone:
+	VM deployed
+	
+2026-06-08 12:10:41 From KARTHICKKRISHNASWAMY to Everyone:
+	Deployment is complete
+	
+2026-06-08 12:11:28 From YajamanamChandana to Everyone:
+	VM is deployed
+	
+2026-06-08 12:16:31 From AjithP to Everyone:
+	RDP done --> but loading the profile
+	
+2026-06-08 12:17:17 From YajamanamChandana to Everyone:
+	logged in
+	
+2026-06-08 12:17:21 From Kamlesh Wamankar to Everyone:
+	Logged in
+	
+2026-06-08 12:17:24 From Rajasekar V (Raja) to Everyone:
+	rdp logged in
+	
+2026-06-08 12:17:26 From UtpalSarkar to Everyone:
+	RDP connected
+	
+2026-06-08 12:17:25 From Abhinav Kashyap to Everyone:
+	Logged in VM
+	
+2026-06-08 12:17:31 From KARTHICKKRISHNASWAMY to Everyone:
+	RDP done
+	
+2026-06-08 12:17:39 From SajeevanKS to Everyone:
+	connected to the VM
+	
+2026-06-08 12:17:39 From Mallikarjuna H M to Everyone:
+	RDP Done
+	
+2026-06-08 12:18:18 From AbhijitMukherjee to Everyone:
+	logged in
+	
+2026-06-08 12:18:09 From Jayesh Hathi to Everyone:
+	RDP done
+	
+2026-06-08 12:20:26 From Shajeer.S to Everyone:
+	logged in
+	
+2026-06-08 12:22:46 From Gopal Das to Everyone:
+	gouri.eastus.cloudapp.azure.com
+	
+2026-06-08 12:26:31 From Gopal Das to Everyone:
+	20.55.41.16
+	
+2026-06-08 12:26:34 From Gopal Das to Everyone:
+	gopal
+	
+2026-06-08 12:26:40 From Gopal Das to Everyone:
+	Admin@12345678
+	
+2026-06-08 12:28:36 From RaghavendraRamakrish to Everyone:
+	yes
+	
+2026-06-08 12:30:19 From Gopal Das to Everyone:
+	Admin@12345678
+	
+2026-06-08 12:32:12 From Gopal Das to Everyone:
+	135.235.197.33
+	
+2026-06-08 12:32:15 From Gopal Das to Everyone:
+	gouri
+	
+2026-06-08 12:32:19 From Gopal Das to Everyone:
+	Admin@12345678
+	
+2026-06-08 12:46:07 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-june-06-26-doc/tree/main
+	
+2026-06-08 12:47:28 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-june-06-26-doc
+	
+2026-06-08 12:49:19 From KARTHICKKRISHNASWAMY to Everyone:
+	Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+	
+2026-06-08 12:52:56 From KARTHICKKRISHNASWAMY to Everyone:
+	All done
+	
+2026-06-08 12:56:33 From AjithP to Everyone:
+	done
+	
+2026-06-08 12:57:03 From Mallikarjuna H M to Everyone:
+	Done
+	
+2026-06-08 12:57:05 From Gopal Das to Everyone:
+	terraform
+	
+2026-06-08 12:57:06 From Gopal Das to Everyone:
+	az
+	
+2026-06-08 12:57:47 From Gopal Das to Everyone:
+	git
+	
+2026-06-08 12:58:42 From Rajasekar V (Raja) to Everyone:
+	4 packages got installted
+	
+2026-06-08 12:58:55 From Rajasekar V (Raja) to Everyone:
+	okay
+	
+2026-06-08 12:59:02 From Gopal Das to Everyone:
+	lunch 1 to 2
+	
+2026-06-08 12:59:52 From Abhinav Kashyap to Everyone:
+	Completed all installations.
+	
+2026-06-08 13:00:27 From Jayesh Hathi to Everyone:
+	Completed all installations
+	
+2026-06-08 13:00:30 From Gopal Das to Everyone:
+	I am going for lunch
+	
+2026-06-08 13:01:02 From YajamanamChandana to Everyone:
+	Done with the installations
+	
+2026-06-08 13:01:12 From Anushalakshmi Veerabommayan to Everyone:
+	All Installations done in Remote Windows M/c
+	
+2026-06-08 13:01:14 From UtpalSarkar to Everyone:
+	Done
+	
+2026-06-08 13:01:33 From SajeevanKS to Everyone:
+	Installed
+	
+2026-06-08 13:07:15 From AshuGupta to Everyone:
+	Done
+	
+2026-06-08 13:08:10 From Gowri Shankar vinay to Everyone:
+	Done
+	
+2026-06-08 13:37:59 From AjithP to Everyone:
+	Done
+	
+2026-06-08 13:58:33 From AbhijitMukherjee to Everyone:
+	back
+	
+2026-06-08 13:58:46 From KARTHICKKRISHNASWAMY to Everyone:
+	back
+	
+2026-06-08 13:58:50 From Gowri Shankar vinay to Everyone:
+	back
+	
+2026-06-08 14:01:29 From Kamlesh Wamankar to Everyone:
+	back
+	
+2026-06-08 14:01:38 From Mallikarjuna H M to Everyone:
+	back
+	
+2026-06-08 14:01:54 From YajamanamChandana to Everyone:
+	back
+	
+2026-06-08 14:01:54 From Abhinav Kashyap to Everyone:
+	back
+	
+2026-06-08 14:02:31 From Rajasekar V (Raja) to Everyone:
+	back
+	
+2026-06-08 14:02:52 From Jayesh Hathi to Everyone:
+	back
+	
+2026-06-08 14:04:39 From SajeevanKS to Everyone:
+	b
+	
+2026-06-08 14:08:10 From Gopal Das to Everyone:
+	kyn-terraform-june08
+	
+2026-06-08 14:08:17 From Gopal Das to Everyone:
+	kyn-terraform-june08
+	
+2026-06-08 14:12:47 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-june-06-26-doc/blob/main/day1-sp-to-auth-tozure
+	
+2026-06-08 14:20:47 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-june-06-26-doc/blob/main/day1-sp-to-auth-tozure
+	
+2026-06-08 14:25:07 From SajeevanKS to Everyone:
+	done
+	
+2026-06-08 14:27:16 From Rajasekar V (Raja) to Everyone:
+	environment variable has been set
+	
+2026-06-08 14:28:39 From Jayesh Hathi to Everyone:
+	Done
+	
+2026-06-08 14:29:42 From VIDYASHREE D S to Everyone:
+	Done
+	
+2026-06-08 14:50:45 From Gopal Das to Everyone:
+	https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
+	
+2026-06-08 14:52:43 From Gopal Das to Everyone:
+	https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine
+	
+2026-06-08 14:59:11 From SajeevanKS to Everyone:
+	done
+	
+2026-06-08 14:59:38 From UtpalSarkar to Everyone:
+	done
+	
+2026-06-08 15:00:07 From RaghavendraRamakrish to Everyone:
+	Done
+	
+2026-06-08 15:10:16 From Gopal Das to Everyone:
+	https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
+	
+2026-06-08 15:10:30 From Gopal Das to Everyone:
+	https://github.com/gopal1409/kyn-june-06-26-doc/blob/main/day1-rg-azure
+	
+2026-06-08 15:10:50 From RaghavendraRamakrish to Everyone:
+	Refresh ==> GitHub - gopal1409/kyn-june-06-26-doc · GitHub
+	
+2026-06-08 15:15:56 From SajeevanKS to Everyone:
+	done
+	
+2026-06-08 15:18:03 From RaghavendraRamakrish to Everyone:
+	Thanks @Gopal Das sir
+	
+2026-06-08 15:19:03 From Rajasekar V (Raja) to Everyone:
+	plugin got created
+	
+2026-06-08 15:20:26 From YajamanamChandana to Everyone:
+	Done
+	
+2026-06-08 15:33:20 From VikrantPasricha to Everyone:
+	RG got created
+	
+2026-06-08 15:35:46 From SajeevanKS to Everyone:
+	RG created
+	
+2026-06-08 15:36:26 From Kamlesh Wamankar to Everyone:
+	RG created
+	
+2026-06-08 15:39:41 From KARTHICKKRISHNASWAMY to Everyone:
+	RG Created
+	
+2026-06-08 15:40:54 From RaghavendraRamakrish to Everyone:
+	RG Created @Gopal Das  -- Thanks
+	
+2026-06-08 15:41:11 From AshuGupta to Everyone:
+	Done
+	
+2026-06-08 15:42:07 From Rajasekar V (Raja) to Everyone:
+	RG created
+	
+2026-06-08 15:59:33 From Jayesh Hathi to Everyone:
+	Thank you @Gopal Das
+	
+2026-06-08 16:00:25 From Gowri Shankar vinay to Everyone:
+	back
+	
+2026-06-08 16:01:16 From KARTHICKKRISHNASWAMY to Everyone:
+	back
+	
+2026-06-08 16:03:13 From Jayesh Hathi to Everyone:
+	Break time ?
+	
+2026-06-08 16:06:28 From AjithP to Everyone:
+	I am back
+	
+2026-06-08 16:06:29 From UtpalSarkar to Everyone:
+	back
+	
+2026-06-08 16:06:33 From Jayesh Hathi to Everyone:
+	back
+	
+2026-06-08 16:06:34 From YajamanamChandana to Everyone:
+	back
+	
+2026-06-08 16:06:36 From SajeevanKS to Everyone:
+	b
+	
+2026-06-08 16:06:37 From RaghavendraRamakrish to Everyone:
+	Im back to desk
+	
+2026-06-08 16:34:28 From Gowri Shankar vinay to Everyone:
+	destroyed
+	
+2026-06-08 16:34:52 From AjithP to Everyone:
+	destroyed
+	
+2026-06-08 16:39:08 From RaghavendraRamakrish to Everyone:
+	Destroyed RG
+	
