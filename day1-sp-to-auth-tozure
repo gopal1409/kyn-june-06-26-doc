@@ -1,0 +1,17 @@
+#lets create the service principal
+##lets create the service principal from azure cloud 
+##3change the name of the service principal and subscript id 
+az ad sp create-for-rbac -n "gopalSP" --role contributor --scope /subscriptions/def2cf32-c635-4684-ad00-5703dbddbe44
+##once you got the service principal you need to arrange the same as environment varaible to be pass in powershell
+$env:ARM_CLIENT_ID = ""
+$env:ARM_CLIENT_SECRET = ""
+$env:ARM_TENANT_ID = ""
+$env:ARM_SUBSCRIPTION_ID = ""
+
+
+###
+
+clientid==appid 
+clientsecret=password
+tenantid 
+subscriptionid
