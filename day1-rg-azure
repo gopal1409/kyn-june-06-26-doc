@@ -1,0 +1,25 @@
+#we will create our first resource group using terraform
+  #lets create a folder and connect it
+  #then we will create our filr provider.tf
+  # We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+  #inside the provider file copy from line 7 till 20 and paste
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=4.1.0" #in production always give the version number
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
+  
+  features {}
+}
+
+##save the file 
+  #then do terraform int
+  which will create a .terraform folder and if you expand the folder you will see the exe file
