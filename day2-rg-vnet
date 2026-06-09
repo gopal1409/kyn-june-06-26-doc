@@ -1,0 +1,59 @@
+#create a file generic-varaibles.tf
+  variable "rg_name" {
+  description = "name of the resource group"
+  type = string #list of string #map #boolean
+  #it will accept only on single value and that value should be string
+  default = "gopal-ter-rg"
+}
+
+variable "location" {
+  description = "location of the resource group"
+  type = string
+  default = "eastus"
+}
+
+
+variable "environment" {
+  type    = string
+  default = "dev"
+}
+
+variable "business_unit" {
+  type    = string
+  default = "sap"
+}
+###delete all the content of resource.tf 
+  resource "azurerm_resource_group" "my_rg" { #refrence block and it should be unique
+  name     = "${var.rg_name}-${local.resource_name_prefix}" #sap-dev
+  location = var.location
+  tags = local.project_tags
+  
+}
+############create an a2.local
+  locals{
+   
+    resource_name_prefix = "${var.business_unit}-${var.environment}" #sap-dev
+    project_tags = { #project tag is the name
+        evn = var.environment #dev
+        bu = var.business_unit #sap
+        projectx = "sap"
+        finance = "101"
+    }
+
+}
+
+######create a1.vnet.tf
+  resource "azurerm_virtual_network" "vnet" {
+  name                = "gopal-network"
+  location            = azurerm_resource_group.my_rg.location
+  resource_group_name = azurerm_resource_group.my_rg.name
+  address_space       = ["10.0.0.0/16"]
+ tags = local.project_tags
+}
+
+#after this do 
+  terraform plan
+  terraform apply
+  ##check in your resource group all the three tag created
+  @check inside the rg a vnet is created
+  
