@@ -27,3 +27,13 @@ resource "azurerm_subnet_network_security_group_association" "nsg_association" {
   ##paste in this website
   https://dreampuf.github.io/GraphvizOnline
   ##you will see the graphical view
+#,modifiy the generic varaibles at the end add this lines
+variable "subnet_name" {
+  type    = string
+  default = "web-subnet"
+}
+
+variable "subnet_address_prefixes" {
+  type    = list(string)
+  default = ["10.0.1.0/24"]
+}
