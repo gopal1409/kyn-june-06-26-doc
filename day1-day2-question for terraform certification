@@ -1,0 +1,371 @@
+1. Provider Block
+Q1. What is the purpose of a Terraform Provider?
+
+A. Store Terraform state
+B. Define infrastructure resources and interact with APIs
+C. Create variables
+D. Execute scripts
+
+✅ Answer: B
+
+Explanation: Providers are plugins that allow Terraform to interact with cloud platforms such as Microsoft Azure, AWS, and GCP.
+
+Q2. Which provider is used for Azure Resource Manager?
+provider "azurerm" {
+  features {}
+}
+
+A. azure
+B. azurerm
+C. arm
+D. azure_rm
+
+✅ Answer: B
+
+Q3. What is the purpose of the features {} block?
+provider "azurerm" {
+  features {}
+}
+
+A. Required initialization block for AzureRM provider
+B. Defines VM features
+C. Enables networking features only
+D. Stores state
+
+✅ Answer: A
+
+2. Resource Group
+Q4. Which Terraform resource creates an Azure Resource Group?
+
+A. azurerm_group
+B. azurerm_rg
+C. azurerm_resource_group
+D. azure_resource_group
+
+✅ Answer: C
+
+Q5. Identify the resource name and local name.
+resource "azurerm_resource_group" "rg" {
+  name     = "dev-rg"
+  location = "East US"
+}
+
+A. Resource Type = rg, Name = azurerm_resource_group
+B. Resource Type = azurerm_resource_group, Name = rg
+C. Resource Type = dev-rg, Name = rg
+D. Resource Type = rg, Name = dev-rg
+
+✅ Answer: B
+
+Q6. Which attribute specifies the Azure region?
+location = "East US"
+
+A. region
+B. zone
+C. location
+D. geography
+
+✅ Answer: C
+
+3. Virtual Network (VNet)
+Q7. Which resource creates a VNet?
+
+A. azurerm_network
+B. azurerm_virtual_network
+C. azurerm_vnet
+D. azurerm_network_vnet
+
+✅ Answer: B
+
+Q8. What does address_space define?
+address_space = ["10.0.0.0/16"]
+
+A. Number of VMs
+B. IP range of VNet
+C. Resource Group location
+D. NSG rules
+
+✅ Answer: B
+
+Q9. How many IP addresses are available in a /16 network?
+10.0.0.0/16
+
+A. 65,536
+B. 256
+C. 1024
+D. 16
+
+✅ Answer: A
+
+Q10. Complete the VNet resource.
+resource "azurerm_virtual_network" "vnet" {
+  name                = "dev-vnet"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  ____________ = ["10.0.0.0/16"]
+}
+
+A. cidr_block
+B. subnet
+C. address_space
+D. network_range
+
+✅ Answer: C
+
+4. Subnet
+Q11. Which resource creates a subnet?
+
+A. azurerm_subnet
+B. azurerm_network_subnet
+C. azurerm_vnet_subnet
+D. azurerm_ip_subnet
+
+✅ Answer: A
+
+Q12. What is the relationship between VNet and Subnet?
+
+A. Subnet contains VNets
+B. VNet contains Subnets
+C. Both are independent
+D. NSG contains Subnets
+
+✅ Answer: B
+
+Q13. Complete the subnet code.
+resource "azurerm_subnet" "web" {
+  name                 = "web-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+
+  ____________ = ["10.0.1.0/24"]
+}
+
+A. cidr
+B. address_prefixes
+C. address_space
+D. subnet_range
+
+✅ Answer: B
+
+Q14. How many IP addresses are available in a /24 subnet?
+
+A. 65,536
+B. 512
+C. 256
+D. 128
+
+✅ Answer: C
+
+5. Network Security Group (NSG)
+Q15. Which resource creates an NSG?
+
+A. azurerm_security_group
+B. azurerm_nsg
+C. azurerm_network_security_group
+D. azurerm_network_group
+
+✅ Answer: C
+
+Q16. What is the purpose of an NSG?
+
+A. Create virtual networks
+B. Control inbound and outbound traffic
+C. Create storage accounts
+D. Manage Terraform state
+
+✅ Answer: B
+
+Q17. Which block defines tags?
+tags = {
+  environment = "dev"
+}
+
+A. Labels resources for management
+B. Creates NSG rules
+C. Defines subnet ranges
+D. Creates variables
+
+✅ Answer: A
+
+6. NSG Rules
+Q18. Which resource creates an NSG Rule?
+
+A. azurerm_security_rule
+B. azurerm_network_security_rule
+C. azurerm_nsg_rule
+D. azurerm_firewall_rule
+
+✅ Answer: B
+
+Q19. What does the priority value represent?
+priority = 100
+
+A. Resource cost
+B. Rule execution order
+C. Number of ports
+D. IP count
+
+✅ Answer: B
+
+Lower number = Higher Priority
+
+Q20. Which action allows traffic?
+access = "Allow"
+
+A. Permit traffic
+B. Block traffic
+C. Encrypt traffic
+D. Route traffic
+
+✅ Answer: A
+
+Q21. Which protocol allows all protocols?
+protocol = "*"
+
+A. TCP only
+B. UDP only
+C. ICMP only
+D. All protocols
+
+✅ Answer: D
+
+Q22. Which rule allows SSH?
+destination_port_range = "22"
+
+A. HTTP
+B. HTTPS
+C. SSH
+D. RDP
+
+✅ Answer: C
+
+Q23. Which rule allows HTTP?
+destination_port_range = "80"
+
+A. HTTP
+B. HTTPS
+C. SSH
+D. DNS
+
+✅ Answer: A
+
+Q24. Which rule allows HTTPS?
+destination_port_range = "443"
+
+A. HTTP
+B. HTTPS
+C. SSH
+D. RDP
+
+✅ Answer: B
+
+Scenario-Based Questions
+Q25. What will Terraform create?
+resource "azurerm_resource_group" "rg" {
+  name     = "prod-rg"
+  location = "Central India"
+}
+
+resource "azurerm_virtual_network" "vnet" {
+  name                = "prod-vnet"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.1.0.0/16"]
+}
+
+A. Resource Group only
+B. VNet only
+C. Resource Group and VNet
+D. NSG and VNet
+
+✅ Answer: C
+
+Q26. What dependency exists here?
+resource_group_name = azurerm_resource_group.rg.name
+
+A. Explicit dependency
+B. Implicit dependency
+C. No dependency
+D. Dynamic dependency
+
+✅ Answer: B
+
+Q27. Which command validates the configuration?
+
+A. terraform init
+B. terraform plan
+C. terraform validate
+D. terraform apply
+
+✅ Answer: C
+
+Q28. Which command shows changes before deployment?
+
+A. terraform apply
+B. terraform plan
+C. terraform output
+D. terraform destroy
+
+✅ Answer: B
+
+Q29. Which command creates the infrastructure?
+
+A. terraform deploy
+B. terraform execute
+C. terraform apply
+D. terraform create
+
+✅ Answer: C
+
+Q30. Which command removes all Terraform-managed resources?
+
+A. terraform delete
+B. terraform clean
+C. terraform remove
+D. terraform destroy
+
+✅ Answer: D
+
+Sample End-to-End Azure Networking Configuration
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = "demo-rg"
+  location = "Central India"
+}
+
+resource "azurerm_virtual_network" "vnet" {
+  name                = "demo-vnet"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.0.0.0/16"]
+}
+
+resource "azurerm_subnet" "web" {
+  name                 = "web-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+resource "azurerm_network_security_group" "nsg" {
+  name                = "web-nsg"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_network_security_rule" "ssh" {
+  name                        = "AllowSSH"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.rg.name
+  network_security_group_name = azurerm_network_security_group.nsg.name
+}
