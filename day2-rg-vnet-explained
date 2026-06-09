@@ -1,0 +1,326 @@
+Terraform Azure Infrastructure Documentation
+1. Overview
+
+This Terraform configuration provisions the following Azure resources:
+
+Azure Resource Group
+Azure Virtual Network (VNet)
+
+The configuration follows Infrastructure as Code (IaC) principles using Terraform and AzureRM Provider.
+
+  Architecture Overview
+  +------------------------------------------------------+
+|                    Terraform                         |
++------------------------------------------------------+
+                |
+                v
++------------------------------------------------------+
+|                Variables Input                       |
+|------------------------------------------------------|
+| rg_name        = gopal-ter-rg                        |
+| location       = eastus                              |
+| environment    = dev                                 |
+| business_unit  = sap                                 |
++------------------------------------------------------+
+                |
+                v
++------------------------------------------------------+
+|                     Locals                           |
+|------------------------------------------------------|
+| resource_name_prefix = sap-dev                       |
+| project_tags = {                                     |
+|   env      = dev                                     |
+|   bu       = sap                                     |
+|   projectx = sap                                     |
+|   finance  = 101                                     |
+| }                                                    |
++------------------------------------------------------+
+                |
+                v
++------------------------------------------------------+
+|           Resource Group Creation                    |
+|------------------------------------------------------|
+| Name: gopal-ter-rg-sap-dev                           |
+| Location: eastus                                     |
+| Tags Applied                                         |
++------------------------------------------------------+
+                |
+                v
++------------------------------------------------------+
+|          Virtual Network Creation                    |
+|------------------------------------------------------|
+| Name: gopal-network                                  |
+| Address Space: 10.0.0.0/16                           |
+| Resource Group: gopal-ter-rg-sap-dev                 |
+| Tags Applied                                         |
++------------------------------------------------------+
+                |
+                v
++------------------------------------------------------+
+|                    Outputs                           |
+|------------------------------------------------------|
+| Resource Group Name                                  |
++------------------------------------------------------+
+
+  2. Terraform Workflow
+Step 1: Provider Initialization
+
+Terraform downloads and initializes AzureRM provider.
+
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=4.1.0"
+    }
+  }
+}
+Purpose
+Locks provider version
+Ensures consistent deployments
+Prevents unexpected changes
+Command
+terraform init
+Step 2: Variables Definition
+
+Variables make code reusable.
+
+Resource Group Name
+variable "rg_name" {
+  description = "name of the resource group"
+  type        = string
+  default     = "gopal-ter-rg"
+}
+Value
+gopal-ter-rg
+Location
+variable "location" {
+  description = "location of the resource group"
+  type        = string
+  default     = "eastus"
+}
+Value
+eastus
+Environment
+variable "environment" {
+  default = "dev"
+}
+Value
+dev
+Business Unit
+variable "business_unit" {
+  default = "sap"
+}
+Value
+sap
+Step 3: Local Values
+
+Locals help avoid repetition.
+
+locals {
+  resource_name_prefix = "${var.business_unit}-${var.environment}"
+
+  project_tags = {
+    env      = var.environment
+    bu       = var.business_unit
+    projectx = "sap"
+    finance  = "101"
+  }
+}
+Generated Resource Prefix
+sap-dev
+Generated Tags
+env      = dev
+bu       = sap
+projectx = sap
+finance  = 101
+Step 4: Resource Group Creation
+resource "azurerm_resource_group" "my_rg" {
+  name     = "${var.rg_name}-${local.resource_name_prefix}"
+  location = var.location
+
+  tags = local.project_tags
+}
+Final Resource Group Name
+
+Terraform evaluates:
+
+var.rg_name = gopal-ter-rg
+local.resource_name_prefix = sap-dev
+
+Result:
+
+gopal-ter-rg-sap-dev
+Resource Group Created
+Property	Value
+Name	gopal-ter-rg-sap-dev
+Location	eastus
+Tags	Applied
+Step 5: Virtual Network Creation
+resource "azurerm_virtual_network" "vnet" {
+  name                = "gopal-network"
+  location            = azurerm_resource_group.my_rg.location
+  resource_group_name = azurerm_resource_group.my_rg.name
+  address_space       = ["10.0.0.0/16"]
+
+  tags = local.project_tags
+}
+Dependency
+
+Terraform automatically understands:
+
+azurerm_virtual_network.vnet
+       |
+       v
+azurerm_resource_group.my_rg
+
+Therefore:
+
+Resource Group created first
+Virtual Network created second
+VNet Configuration
+Property	Value
+Name	gopal-network
+Address Space	10.0.0.0/16
+Resource Group	gopal-ter-rg-sap-dev
+Location	eastus
+Step 6: Output Block
+output "resource_group_name" {
+  description = "showing the resource group"
+  value       = azurerm_resource_group.my_rg.name
+}
+Output Result
+resource_group_name = gopal-ter-rg-sap-dev
+Complete Execution Workflow
+terraform init
+Downloads AzureRM Provider
+Creates .terraform directory
+Creates provider lock file
+
+↓
+
+terraform validate
+Checks Terraform syntax
+Checks resource references
+Checks provider configuration
+
+↓
+
+terraform plan
+Reads variables
+Evaluates locals
+Calculates execution plan
+Shows resources to be created
+
+↓
+
+terraform apply
+Creates Resource Group
+Creates Virtual Network
+Applies Tags
+Stores State File
+Displays Outputs
+
+↓
+
+terraform destroy
+Deletes Virtual Network
+Deletes Resource Group
+Updates State File
+Dependency Workflow Diagram
+Variables
+   |
+   |
+   +--------------------+
+   |                    |
+   v                    v
+Environment       Business Unit
+   |                    |
+   +---------+----------+
+             |
+             v
+         Locals
+             |
+             |
+             v
+  resource_name_prefix
+      sap-dev
+             |
+             |
+             v
+Resource Group
+gopal-ter-rg-sap-dev
+             |
+             |
+             v
+Virtual Network
+gopal-network
+             |
+             |
+             v
+Outputs
+Detailed Terraform Execution Flow
+┌───────────────────────────┐
+│ terraform init            │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Download AzureRM Provider │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Read Variables            │
+│ rg_name                   │
+│ location                  │
+│ environment               │
+│ business_unit             │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Evaluate Locals           │
+│ resource_name_prefix      │
+│ project_tags              │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Create Resource Group     │
+│ gopal-ter-rg-sap-dev      │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Create Virtual Network    │
+│ gopal-network             │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Store Terraform State     │
+│ terraform.tfstate         │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│ Display Output            │
+│ resource_group_name       │
+└───────────────────────────┘
+Final Resources Created
+Resource Type	Resource Name
+Resource Group	gopal-ter-rg-sap-dev
+Virtual Network	gopal-network
+Learning Points Covered
+Variables
+Local Values
+Resource Blocks
+AzureRM Provider
+String Interpolation
+Resource Dependencies
+Tags Management
+Output Values
+Terraform State Management
+Terraform Workflow (Init → Plan → Apply → Destroy)
+Azure Resource Provisioning using Terraform
