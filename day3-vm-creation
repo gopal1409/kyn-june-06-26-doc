@@ -1,0 +1,15 @@
+####
+  #lets create a folder app
+  ##3inside the folder we will create a file called as app.sh
+  #!/bin/sh
+sudo apt-get update -y
+sudo apt install -y apache2
+sudo chmod -R 777 /var/www/html
+sudo echo "Welcome to besimple - WebVM  - VM Hostname: $(hostname)" > /var/www/html/index.html
+##lets create the ssh key we will use to login inside the instance
+   3 mkdir ssh-keys                                                                                      
+   4 cd ssh-keys                                                                                         
+   5 ssh-keygen -m PEM -t rsa -b 4096 -C "azureuser@myserver" -f terraform-azure.pem                     
+   6 ls                                                                                                  
+   7 cd ..   
+  
