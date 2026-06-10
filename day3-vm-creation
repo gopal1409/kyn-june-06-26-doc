@@ -12,4 +12,57 @@ sudo echo "Welcome to besimple - WebVM  - VM Hostname: $(hostname)" > /var/www/h
    5 ssh-keygen -m PEM -t rsa -b 4096 -C "azureuser@myserver" -f terraform-azure.pem                     
    6 ls                                                                                                  
    7 cd ..   
+####lets create a file a1.vm.tf copy from line 16 till 45
+resource "azurerm_linux_virtual_machine" "linux_vm" {
+  name                = "${local.resource_name_prefix}-linux-vm"
+  resource_group_name = azurerm_resource_group.my_rg.name
+  location            = azurerm_resource_group.my_rg.location
+  size                = "Standard_F2"
+  admin_username      = "azureuser"
+  network_interface_ids = [
+    azurerm_network_interface.web_nic.id,
+  ]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("${path.module}/ssh-keys/terraform-azure.pem.pub")
+    #public_key = file(C:\Users\gopal\Desktop\terraform-project\ssh-keys\terraform-azure.pem.pub) --- IGNORE ---
+    #this path.module will always look for your file in the current directory
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+  custom_data = filebase64("${path.module}/app/app.sh") #it will read the content of the file and convert it to base64 encoded string and pass it to the custom data
+}
   
+##inside the rg_output add the vm public ip at the end
+output "vm_public_ip" {
+  description = "showing the public ip address of the vm"
+  value = azurerm_public_ip.web_vm_publicip.ip_address
+}
+
+##then do 
+terraform validate
+terraform fmt
+terraform plan
+terraform apply
+###once apply complete it will give you the public ip
+##copy the public ip and paste in the browser but wait for 2 min
+##you will see the test page 
+##next activity login inside the instance 
+25 cd .\ssh-keys\                                                                                      
+  26 ssh -i .\terraform-azure.pem azureuser@20.127.108.50 
+curl localhost
+exit
+cd ..
+##on line 63 replace the public ip with your ip
+##finally do terraform destroy
