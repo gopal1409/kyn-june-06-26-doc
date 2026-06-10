@@ -1,0 +1,60 @@
+#first we will disable the public ip go to a4.publicip.tf and disable the same using multi line comment /* */
+  #next we need to create multiple nic card and instance
+  ###create a new file a7.map-instance.tf
+  variable "cartypes" {
+  description = "map of the instance size with different environment"
+  type        = map(string) #dictionary of string values
+  default = {
+    "audi"     = "vwg",   #1 core processor and 1 Gb of RAM
+    "bentley" = "vwg",    #2 core 4 GB RAM
+   
+  }
+}
+#lets modify the a5.nic.tf #delete everything and copy paste the same
+  resource "azurerm_network_interface" "web_nic" {
+  for_each = var.cartypes
+  name                = "${local.resource_name_prefix}-web-nic-{each.key}"
+  location            = azurerm_resource_group.my_rg.location
+  resource_group_name = azurerm_resource_group.my_rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.web_subnet.id #nic required subnet 
+    private_ip_address_allocation = "Dynamic"
+   # public_ip_address_id          = azurerm_public_ip.web_vm_publicip.id #nic required public ip
+  }
+}
+  ###a1.linux-vm.tf delete everything and add this 
+    resource "azurerm_linux_virtual_machine" "linux_vm" {
+  for_each = var.cartypes
+  name                = "${local.resource_name_prefix}-linux-vm-{each.key}"
+  resource_group_name = azurerm_resource_group.my_rg.name
+  location            = azurerm_resource_group.my_rg.location
+  size                = var.vm_instance_size["testing"] #it will look for the value of the key in the map and return the value
+  admin_username      = "azureuser"
+  network_interface_ids = [
+    azurerm_network_interface.web_nic[each.key].id,
+  ]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("${path.module}/ssh-keys/terraform-azure.pem.pub")
+    #public_key = file(C:\Users\gopal\Desktop\terraform-project\ssh-keys\terraform-azure.pem.pub) --- IGNORE ---
+    #this path.module will always look for your file in the current directory
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+  custom_data = filebase64("${path.module}/app/app.sh") #it will read the content of the file and convert it to base64 encoded string and pass it to the custom data
+}
+#disable the public ip from the output file
+###then do terraform apply it should show you two instance with two nic is created in your rg
