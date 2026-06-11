@@ -30,3 +30,8 @@ provider "azurerm" {
 
   features {}
 }
+#after this
+terraform plan
+##go inside the contianer you will see the state file
+terraform apply
+####3check the versioing of the state file
