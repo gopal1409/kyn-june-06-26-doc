@@ -61,7 +61,6 @@ ssh-keygen -t rsa
   102  git branch
   103  git checkout master
   104  cat calcy.py
-  105  git --merge multi
   106  git merge multi
   107  cat calcy.py
   108  git push origin --all
