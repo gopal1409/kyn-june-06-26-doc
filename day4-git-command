@@ -47,3 +47,21 @@ ssh-keygen -t rsa
 ###press enter enter enter
 ##once generated 
  cat /c/Users/gopal/.ssh/id_rsa.pub
+#branching in git
+ 92  cat calcy.py
+   93  git branch multi
+   94  git branch
+   95  git checkout multi
+   96  git branch
+   97  cat calcy.py
+   98  echo "we are adding multiply function" >> calcy.py
+   99  cat calcy.py
+  100  git add calcy.py
+  101  git commit -m "added multiply function"
+  102  git branch
+  103  git checkout master
+  104  cat calcy.py
+  105  git --merge multi
+  106  git merge multi
+  107  cat calcy.py
+  108  git push origin --all
