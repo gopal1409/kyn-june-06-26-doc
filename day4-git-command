@@ -42,3 +42,8 @@ git config --global user.name "gopal"
    75  git diff
    76  git checkout calcy.py
    77  git status
+#lets generate the public pvt key
+ssh-keygen -t rsa
+###press enter enter enter
+##once generated 
+ cat /c/Users/gopal/.ssh/id_rsa.pub
