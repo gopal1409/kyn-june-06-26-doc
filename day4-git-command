@@ -1,0 +1,33 @@
+##from the windows menu search for git bash
+git config --global user.name "gopal"
+  git config --global user.email "gopal1409@gmail.com"
+  #lets create a project folder
+39  mkdir project
+   40  rm -rf project
+   41  mkdir project
+  
+   42  cd project/
+   43  git status
+  #create some file in the project folder
+   44  touch calcy.py
+   45  touch DS_Store
+   46  touch auth
+   47  touch secret
+   48  git status
+  ##lets intialized the git diretory 
+   49  git init
+   50  ls -la
+   51  ls .git
+  #if you remove the .git folder everything will be cleaned up
+   52  rm -rf .git
+   53  git status
+   54  git init
+   55  git status
+   56  echo "we will start with calcy project" > calcy.py
+  #to create the version will be using git init
+  
+   57  git add calcy.py
+   58  git status
+   59  git commit -m "intialized calcy project"
+  #this will show the version
+   60  git log
