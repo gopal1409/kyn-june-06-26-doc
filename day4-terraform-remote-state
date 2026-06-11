@@ -6,9 +6,27 @@
   #once the contianer is created we will change the region to 
   #go to generic varaibles file change the region to eastus
   #3then go to a9.bastion /* and */ and disable it
-backend "azurerm" {
-    resource_group_name   = "terraform-storage-gopal" #replace the same with your storage account rg
-    storage_account_name  = "terraformstoragegopal" #replace the same with your own storage account
-    container_name        = "tfstate" #name of the container
-    key                   = "project-1-eastus-terraform.tfstate" #state file will be stored with this name
+#delete everything inside the provider file
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+     # version = "=4.1.0" #in production always give the version number
+    }
   }
+  backend "azurerm" {
+    resource_group_name   = "terraform-storage-gopal" #replace the same with your storage account rg
+    storage_account_name  = "tfstoragegopal" #replace the same with your own storage account
+    container_name        = "tfstate" #name of the container
+    key                   = "gopal.tfstate" #state file will be stored with this name
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
+
+  features {}
+}
